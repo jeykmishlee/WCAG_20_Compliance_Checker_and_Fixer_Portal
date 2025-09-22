@@ -1,0 +1,27 @@
+{
+  "name": "wcag-fixer-portal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@axe-core/puppeteer": "^4.10.1",
+    "@google-cloud/vision": "^5.2.0",
+    "axe-core": "^4.10.2",
+    "axe-puppeteer": "^1.1.1",
+    "axios": "^1.6.2",
+    "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.21.2",
+    "puppeteer": "^24.3.0",
+    "tinycolor2": "^1.6.0",
+    "uuid": "^11.1.0"
+  }
+}
