@@ -1,0 +1,653 @@
+:root {
+    --primary-color: #6a0dad; 
+    --error-color: #dc2626;
+    --success-color: #16a34a;
+    --text-color: #1f2937;
+    --bg-color: #f3f4f6;
+    --card-bg: #ffffff;
+    --secondary-color: #9b59b6;
+    --focus-ring: 3px solid #6a0dad;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.warning-container {
+    border: 2px solid var(--error-color);
+    background-color: #fee2e2;
+    color: var(--error-color);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 0.2rem;
+    color: var(--primary-color);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+    font-style: italic;
+    font-size: 1.25rem;
+}
+
+.scan-form {
+    margin-bottom: 2rem;
+}
+
+.form-field {
+    margin-bottom: 1rem;
+}
+
+.form-field label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.input-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.input-hint {
+    font-size: 0.875rem;
+    color: #374151;
+    margin-top: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+input[type="link"] {
+    flex: 1;
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s, outline 0.2s;
+}
+
+button:hover {
+    background-color: #4a0979;
+}
+
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+a:focus {
+    outline: var(--focus-ring);
+    outline-offset: 2px;
+}
+
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+select:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+    outline: none;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: 2px;
+}
+
+.loading-indicator {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 1rem;
+    border: 4px solid #e5e7eb;
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.results {
+    background-color: var(--card-bg);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.issue-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.issue-card h3 {
+    color: var(--error-color);
+    margin-bottom: 0.5rem;
+}
+
+.issue-card .impact {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.impact.critical {
+    background-color: #fee2e2;
+    color: var(--error-color);
+}
+
+.impact.serious {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.impact.moderate {
+    background-color: #e0f2fe;
+    color: #0369a1;
+}
+
+.impact.minor {
+    background-color: #f3f4f6;
+    color: #4b5563;
+}
+
+.error {
+    background-color: #fee2e2;
+    color: var(--error-color);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.issue-card .issue-summary {
+    background-color: #f0f9ff;
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    margin: 0.5rem 0;
+    border-left: 4px solid var(--primary-color);
+}
+
+.issue-card .element-count {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+}
+
+.issue-card .elements {
+    background-color: #f8fafc;
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    margin-top: 0.5rem;
+    font-family: monospace;
+    font-size: 0.875rem;
+    overflow-x: auto;
+}
+
+.fix-webpage-btn {
+    display: block;
+    margin: 1rem auto;
+    padding: 0.75rem 2rem;
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.fix-webpage-btn:hover {
+    background-color: #4a0979;
+}
+
+.fix-webpage-btn:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+}
+
+.fixed-webpage-container {
+    background-color: var(--card-bg);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+}
+
+.fixed-webpage-header {
+    margin-bottom: 1rem;
+}
+
+.fixed-webpage-header h2 {
+    color: var(--success-color);
+    margin-bottom: 0.5rem;
+}
+
+.fix-summary {
+    background-color: #ecfdf5;
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    margin: 0.5rem 0 1rem;
+    border-left: 4px solid var(--success-color);
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.fix-summary p {
+    margin-bottom: 0.25rem;
+}
+
+.fix-summary .fix-count {
+    font-weight: 600;
+    color: var(--success-color);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.fix-summary ul.fix-details {
+    margin: 0.5rem 0 1rem 1.5rem;
+    list-style-type: circle;
+}
+
+.fix-summary ul.fix-examples {
+    margin: 0.5rem 0 1rem 1.5rem;
+    list-style-type: disc;
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.fix-summary ul.fix-examples li {
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+}
+
+.fix-summary code {
+    background-color: #f1f5f9;
+    padding: 0.1rem 0.3rem;
+    border-radius: 0.25rem;
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: #0f172a;
+}
+
+.fix-summary strong {
+    color: var(--text-color);
+    margin-top: 0.75rem;
+    display: block;
+}
+
+.audit-log-summary {
+    background-color: #f0f9ff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    border-left: 4px solid var(--primary-color);
+}
+
+.audit-log-summary p {
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.audit-log-summary strong {
+    color: var(--primary-color);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.webpage-frame {
+    width: 100%;
+    height: 600px;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    display: block;
+}
+
+.success {
+    color: var(--success-color);
+    font-weight: 600;
+    text-align: center;
+    padding: 1rem;
+}
+
+.test-another-url-btn {
+    display: block;
+    margin: 1.5rem auto 0;
+    padding: 0.75rem 2rem;
+    background-color: var(--success-color); 
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.test-another-url-btn:hover {
+    background-color: #4a0979; 
+}
+
+.fixed-webpage-section {
+    background-color: var(--card-bg);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.fixed-webpage-section h2 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+.results-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.action-buttons {
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.errors-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    max-height: 400px; 
+    overflow-y: auto; 
+    overflow-x: hidden;
+    width: 100%;
+}
+.errors-section .report-section {
+    flex: 1;
+    min-width: 0; 
+    max-width: calc(50% - 1rem); 
+}
+
+.alt-text-section {
+    margin-top: 2rem;
+}
+
+@media (min-width: 1024px) {
+    .results-layout {
+        flex-direction: row;
+    }
+    
+    .results-sidebar {
+        width: 40%;
+    }
+    
+    .results-main {
+        width: 60%;
+    }
+}
+
+.results-sidebar, .results-main {
+    flex: 1;
+}
+
+.results-main h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.report-section {
+    margin-bottom: 1.5rem;
+    background-color: #f8fafc;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    border-left: 4px solid var(--primary-color);
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.report-section h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+}
+
+.errors-list, .alt-text-list {
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.error-category {
+    margin-bottom: 1rem;
+}
+
+.error-category-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.error-count {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.1rem 0.5rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+}
+
+.error-item {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    background-color: white;
+    border-radius: 0.25rem;
+    border-left: 3px solid var(--primary-color);
+    font-size: 0.9rem;
+    word-wrap: break-word;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+}
+
+.error-code {
+    font-family: monospace;
+    background-color: #f1f5f9;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    margin-top: 0.25rem;
+    display: block;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    font-size: 0.85rem;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.alt-text-item {
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    background-color: white;
+    border-radius: 0.25rem;
+    border-left: 3px solid var(--success-color);
+}
+
+.alt-text-image {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.alt-text-value {
+    font-style: italic;
+    color: #4b5563;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.action-btn {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.action-btn:first-child {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.action-btn:first-child:hover {
+    background-color: #4a0979; 
+}
+
+.action-btn:last-child {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.action-btn:last-child:hover {
+    background-color: #4a0979;
+}
+
+.fixed-webpage-frame-container {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    height: 500px;
+    margin-bottom: 2rem;
+}
+
+.fixed-webpage-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.audit-summary {
+    background-color: #f8fafc;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    border-left: 4px solid var(--primary-color);
+}
+
+.audit-summary h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+.axe-audit {
+    border-left-color: #0284c7;
+}
+
+.axe-audit h3 {
+    color: #0284c7;
+}
+
+.audit-issues, .remaining-issues {
+    margin: 0.5rem 0 1rem 1.5rem;
+    list-style-type: disc;
+}
+
+.audit-issues li, .remaining-issues li {
+    margin-bottom: 0.25rem;
+}
+
+.webpage-frames-container {
+    position: relative;
+    margin: 1rem 0;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+    color: #374151; 
+    font-size: 0.875rem;
+}

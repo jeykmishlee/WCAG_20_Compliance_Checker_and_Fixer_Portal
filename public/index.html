@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FixAble - Automated webpage accessibility audit and repair tool.">
+    <title>FixAble - Automated Web Accessibility Compliance Tool</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header role="banner" lang="en">
+            <h1>FixAble</h1>
+            <h2>Automated Web Accessibility Compliance Tool</h2>
+        </header>
+        
+        <main>
+            <section id="scanSection">
+                <form id="scanForm" class="scan-form" aria-labelledby="formHeading">
+                    <h2 id="formHeading" class="visually-hidden">Check Website Accessibility</h2>
+                    <div class="form-field">
+                        <label for="urlInput">Website URL:</label>
+                        <div class="input-group">
+                            <input type="link" id="urlInput" placeholder="Enter a website URL (e.g., example.com)"
+                                aria-describedby="urlHint" required>
+                            <button type="submit" id="scanButton">Scan & Fix Webpage</button>
+                        </div>
+                        <p id="urlHint" class="input-hint">Enter a full URL or just a domain name like "example.com"</p>
+                    </div>
+                </form>
+
+                <div id="loadingIndicator" class="loading-indicator hidden" aria-live="polite">
+                    <div class="spinner" aria-hidden="true"></div>
+                    <p id="loadingMessage"></p>
+                </div>
+
+                <div id="error" class="error hidden" role="alert" aria-live="assertive">
+                    <p id="errorMessage"></p>
+                </div>
+            </section>
+
+            <section id="resultsSection" class="results hidden" aria-live="polite">
+                <h2>Original Scan Results</h2>
+                <button id="backToFixedBtn" class="back-btn">Back to Fixed Webpage</button>
+                <div id="issuesList"></div>
+            </section>
+
+            <div id="warningMessage" class="warning-container hidden" role="alert" aria-live="assertive"></div>
+            <section id="fixedWebpageSection" class="fixed-webpage-section hidden" aria-live="polite">
+                <h2 id="websiteTitle">Improved Webpage for <span id="websiteName">[Website]</span></h2>
+                
+                <div class="action-buttons">
+                    <button id="openFixedWebpageBtn" class="action-btn">Open Fixed Webpage</button>
+                    <!-- <button id="exportHtmlBtn" class="action-btn">Export HTML</button> -->
+                    <button id="testAnotherUrlBtn" class="action-btn">Enter Another URL</button>
+                </div>
+                <div id="fixedWebpageContainer" class="fixed-webpage-frame-container">
+                    <iframe id="fixedWebpageFrame" class="fixed-webpage-frame" title="Fixed webpage with accessibility improvements"></iframe>
+                </div>
+
+                <div class="errors-section">
+                    <div id="originalErrorsSection" class="report-section">
+                        <h3>Original Errors</h3>
+                        <div id="originalErrorsList" class="errors-list"></div>
+                    </div>
+                    <div id="remainingErrorsSection" class="report-section">
+                        <h3>Errors Remaining</h3>
+                        <div id="remainingErrorsList" class="errors-list"></div>
+                    </div>
+                </div>
+
+                <div id="fixedErrorsSection" class="report-section">
+                    <h3>Errors Fixed by FixAble</h3>
+                    <div id="fixedErrorsList" class="errors-list"></div>
+                </div>
+                <div id="altTextSection" class="report-section">
+                    <h3>Generated Alt Texts</h3>
+                    <div id="altTextList" class="alt-text-list"></div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 FixAble - Web accessibility made simple.</p>
+        </footer>
+    </div>
+    
+    <script src="/app.js"></script>
+</body>
+</html>
